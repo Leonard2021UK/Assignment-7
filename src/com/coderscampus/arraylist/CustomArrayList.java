@@ -1,8 +1,6 @@
 package com.coderscampus.arraylist;
 
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 public class CustomArrayList<T> implements CustomList<T> {
 
@@ -16,7 +14,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     /**
      *
      * @param item the item to be added to the <code>CustomList</code>
-     * @return
+     * @return boolean - true if the insertion was successful otherwise false
      */
     @Override
     public boolean add(T item) {
@@ -27,9 +25,13 @@ public class CustomArrayList<T> implements CustomList<T> {
         return true;
     }
 
+    public boolean add (int index, T item) throws IndexOutOfBoundsException{
+        return true;
+    };
+
     /**
      * Returns the true size of the array
-     * @return
+     * @return - size of the list
      */
 
     @Override
@@ -44,9 +46,10 @@ public class CustomArrayList<T> implements CustomList<T> {
      * @throws IndexOutOfBoundsException
      */
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) throws IndexOutOfBoundsException{
         if ( index > getSize() )
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index out of bound!");
         return (T) items[index];
     }
 

@@ -7,7 +7,7 @@ public class CustomArrayListApp {
 
     public static void main(String[] args) {
 
-        CustomArrayList newCustomArrayList = new CustomArrayList();
+        CustomArrayList<Integer> newCustomArrayList = new CustomArrayList<>();
 
         long start = System.currentTimeMillis();
 
