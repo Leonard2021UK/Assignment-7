@@ -12,7 +12,7 @@ public class CustomArrayListApp {
         long start = System.currentTimeMillis();
 
         // Test for 3 million integer insertion
-        for (int i = 0; i < 3_000_000; i++) {
+        for (int i = 0; i < 3_000; i++) {
             newCustomArrayList.add(i);
         }
 
