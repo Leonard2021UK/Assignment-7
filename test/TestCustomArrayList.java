@@ -121,8 +121,16 @@ public class TestCustomArrayList {
             customArrayList.add(i);
         }
 
+        int lengthBeforeRemove = customArrayList.getSize();
+
+        Integer removedItem = customArrayList.remove(indexAtRemove);
+
         // get item from pre populated index
-        Assert.assertEquals(5,(Object)customArrayList.remove(indexAtRemove));
+        Assert.assertEquals(6,(Object)customArrayList.get(5));
+
+
+        // get item from pre populated index
+        Assert.assertEquals(lengthBeforeRemove - 1,(Object)customArrayList.getSize());
 
         //test exception
         IndexOutOfBoundsException thrown = assertThrows(

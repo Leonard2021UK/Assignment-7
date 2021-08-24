@@ -72,6 +72,7 @@ public class CustomArrayList<T> implements CustomList<T> {
             throw new IndexOutOfBoundsException("Index out of bound!");
         T removedValue = (T) this.items[index];
         this.items = IntStream.range(0,this.items.length).filter(i -> i != index).mapToObj(i -> this.items[i]).toArray();
+        this.index--;
         return removedValue;
     }
 
