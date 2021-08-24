@@ -11,8 +11,10 @@ public class TestCustomArrayList {
 
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
+        int arrayListSize = 21;
+
         // populate the test arrayList
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < arrayListSize; i++) {
             customArrayList.add(i);
         }
 
@@ -29,9 +31,10 @@ public class TestCustomArrayList {
         int testIndex = 5;
         int testItem = 12;
         int nonExistentTestIndex = 8;
+        int arrayListSize = 4;
 
         // populate the test arrayList
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i <= arrayListSize; i++) {
             customArrayList.add(i);
         }
 
@@ -58,11 +61,11 @@ public class TestCustomArrayList {
     public void shouldGetArrayListSize(){
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
-        int testSize = 25;
+        int arrayListSize = 25;
         int expectedSize = 25;
 
         // populate the test arrayList
-        for (int i = 0; i <= testSize; i++) {
+        for (int i = 0; i < arrayListSize; i++) {
             customArrayList.add(i);
         }
 
@@ -82,11 +85,11 @@ public class TestCustomArrayList {
         int indexThrowsException = 15;
         int testIndex = 5;
         int testItem = 12;
-        int arraySize = 5;
+        int arrayListSize = 5;
         int existingIndex = 2;
 
         // populate the test arrayList
-        for (int i = 0; i <= arraySize; i++) {
+        for (int i = 0; i < arrayListSize; i++) {
             customArrayList.add(i);
         }
 
@@ -113,29 +116,30 @@ public class TestCustomArrayList {
 
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
-        int indexAtRemove = 5;
+        int indexAtRemove = 6;
+        int arrayListSize = 10;
+        int outOfBoundIndex = arrayListSize + 5;
 
 
         // populate the test arrayList
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i < arrayListSize; i++) {
             customArrayList.add(i);
         }
+
+        // get item from pre populated index
+        Assert.assertEquals(6,(Object)customArrayList.get(indexAtRemove));
 
         int lengthBeforeRemove = customArrayList.getSize();
 
         Integer removedItem = customArrayList.remove(indexAtRemove);
 
-        // get item from pre populated index
-        Assert.assertEquals(6,(Object)customArrayList.get(5));
-
-
-        // get item from pre populated index
+        // get size after removal
         Assert.assertEquals(lengthBeforeRemove - 1,(Object)customArrayList.getSize());
 
         //test exception
         IndexOutOfBoundsException thrown = assertThrows(
                 IndexOutOfBoundsException.class,
-                ()->customArrayList.remove(15)
+                ()->customArrayList.remove(outOfBoundIndex)
         );
 
         Assert.assertTrue(thrown.getMessage().contains("Index out of bound!"));
