@@ -21,7 +21,7 @@ public class CustomArrayList<T> implements CustomList<T> {
      */
     @Override
     public boolean add(T item) {
-        if ( index >= items.length ){
+        if ( index >= this.items.length ){
             this.extendArray();
         }
         items[index++] = item;
@@ -29,9 +29,26 @@ public class CustomArrayList<T> implements CustomList<T> {
     }
 
     public boolean add (int index, T item) throws IndexOutOfBoundsException{
+
+        // if index is invalid throw exception
         if ( index > getSize() )
             throw new IndexOutOfBoundsException("Index out of bound!");
-        this.items[index] = item;
+
+        // if the size of the backing array is not enough to insert a new element the resize
+        if ((index+1) >= this.items.length)
+            extendArray();
+
+        // create a temp array same size as the current
+        Object[] newItems = new Object[this.items.length+1];
+
+        for (int newIndex = 0, oldIndex = 0; oldIndex < this.getSize(); newIndex++,oldIndex++) {
+            if(newIndex == index){
+                newItems[newIndex] = item;
+                newIndex++;
+            }
+            newItems[newIndex] = this.items[oldIndex];
+        }
+        this.items = newItems;
         return true;
     };
 
@@ -42,7 +59,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
     @Override
     public int getSize() {
-        return index;
+        return this.index;
     }
 
     /**

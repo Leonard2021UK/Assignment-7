@@ -23,18 +23,18 @@ public class TestCustomArrayList {
 
 
 
-    @Test
+    @Test()
     public void shouldAddItemToArrayListAtSpecifiedIndexOrThrowException(){
 
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
-        int testIndex = 5;
+        int testIndex = 3;
         int testItem = 12;
-        int nonExistentTestIndex = 8;
-        int arrayListSize = 4;
+        int nonExistentTestIndex = 15;
+        int arrayListSize = 9;
 
         // populate the test arrayList
-        for (int i = 0; i <= arrayListSize; i++) {
+        for (int i = 0; i < arrayListSize; i++) {
             customArrayList.add(i);
         }
 
@@ -85,7 +85,7 @@ public class TestCustomArrayList {
         int indexThrowsException = 15;
         int testIndex = 5;
         int testItem = 12;
-        int arrayListSize = 5;
+        int arrayListSize = 10;
         int existingIndex = 2;
 
         // populate the test arrayList
