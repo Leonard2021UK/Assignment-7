@@ -32,7 +32,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
         // if index is invalid throw exception
         if ( index > getSize() )
-            throw new IndexOutOfBoundsException("Index out of bound!");
+            throw new IndexOutOfBoundsException("Index out of bound at " + index + "!");
 
         // if the size of the backing array is not enough to insert a new element the resize
         if ((index+1) >= this.items.length)
@@ -72,7 +72,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     @SuppressWarnings("unchecked")
     public T get(int index) throws IndexOutOfBoundsException{
         if ( index > getSize() )
-            throw new IndexOutOfBoundsException("Index out of bound!");
+            throw new IndexOutOfBoundsException("Index out of bound at " + index + "!");
         return (T) items[index];
     }
 
@@ -86,7 +86,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     @SuppressWarnings("unchecked")
     public T remove (int index) {
         if ( index > getSize() )
-            throw new IndexOutOfBoundsException("Index out of bound!");
+            throw new IndexOutOfBoundsException("Index out of bound at " + index + "!");
         T removedValue = (T) this.items[index];
         this.items = IntStream.range(0,this.items.length).filter(i -> i != index).mapToObj(i -> this.items[i]).toArray();
         this.index--;

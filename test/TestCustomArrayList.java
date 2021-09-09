@@ -28,9 +28,9 @@ public class TestCustomArrayList {
 
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
-        int testIndex = 3;
+        int testIndex = 8;
         int testItem = 12;
-        int nonExistentTestIndex = 15;
+        int outOfBoundIndex = 10;
         int arrayListSize = 9;
 
         // populate the test arrayList
@@ -41,7 +41,7 @@ public class TestCustomArrayList {
         // add item at test index
         customArrayList.add(testIndex,testItem);
 
-        // get item from a pre populated index
+        // get item from an exiting index
         Assert.assertEquals(2,(Object)customArrayList.get(2));
 
         // test newly added item
@@ -50,10 +50,10 @@ public class TestCustomArrayList {
         //test addition at non existing index
         IndexOutOfBoundsException thrown = assertThrows(
                 IndexOutOfBoundsException.class,
-                ()->customArrayList.get(nonExistentTestIndex)
+                ()->customArrayList.get(outOfBoundIndex)
         );
 
-        Assert.assertTrue(thrown.getMessage().contains("Index out of bound!"));
+        Assert.assertTrue(thrown.getMessage().contains("Index out of bound at " + outOfBoundIndex + "!"));
     }
 
 
@@ -82,7 +82,7 @@ public class TestCustomArrayList {
 
         CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
 
-        int indexThrowsException = 15;
+        int outOfBoundIndex = 15;
         int testIndex = 5;
         int testItem = 12;
         int arrayListSize = 10;
@@ -105,10 +105,10 @@ public class TestCustomArrayList {
         //test addition at non existing index
         IndexOutOfBoundsException thrown = assertThrows(
                 IndexOutOfBoundsException.class,
-                ()->customArrayList.get(indexThrowsException)
+                ()->customArrayList.get(outOfBoundIndex)
         );
 
-        Assert.assertTrue(thrown.getMessage().contains("Index out of bound!"));
+        Assert.assertTrue(thrown.getMessage().contains("Index out of bound at " + outOfBoundIndex + "!"));
     }
 
     @Test
@@ -142,6 +142,6 @@ public class TestCustomArrayList {
                 ()->customArrayList.remove(outOfBoundIndex)
         );
 
-        Assert.assertTrue(thrown.getMessage().contains("Index out of bound!"));
+        Assert.assertTrue(thrown.getMessage().contains("Index out of bound at " + outOfBoundIndex + "!"));
     }
 }
